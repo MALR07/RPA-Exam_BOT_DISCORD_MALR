@@ -1,0 +1,573 @@
+{
+  "name": "Mensaje OCELOT DISCORD",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        -208
+      ],
+      "id": "d7aaa9db-587c-4448-b1a3-0592c02f5c11",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Edita solo lo que está entre comillas para cambiar la fecha\nconst fechaExamen = \"30/05/2026\"; \n\nreturn {\n  fechaSeleccionada: fechaExamen\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -48,
+        -208
+      ],
+      "id": "fbb979e3-099c-49ec-baf8-0721bf117b84",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "react",
+        "guildId": {
+          "__rl": true,
+          "value": "1448038660430889103",
+          "mode": "list",
+          "cachedResultName": "COMANDO OCELOT",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1448090026385608755",
+          "mode": "list",
+          "cachedResultName": "⟹📰capacitaciones",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103/1448090026385608755"
+        },
+        "messageId": "={{ $json.id }}",
+        "emoji": "✅"
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        624,
+        -304
+      ],
+      "id": "6b270272-8653-4b9d-8634-29257b0b2378",
+      "name": "React with an emoji to a message",
+      "webhookId": "5e5bd6e3-d3c2-4759-ad5a-9e8fb87abf2f",
+      "credentials": {
+        "discordBotApi": {
+          "id": "fWwhafGHGA0I0QRh",
+          "name": "Discord Bot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "react",
+        "guildId": {
+          "__rl": true,
+          "value": "1448038660430889103",
+          "mode": "list",
+          "cachedResultName": "COMANDO OCELOT",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1448090026385608755",
+          "mode": "list",
+          "cachedResultName": "⟹📰capacitaciones",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103/1448090026385608755"
+        },
+        "messageId": "={{ $json.id }}",
+        "emoji": "❌"
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        624,
+        -128
+      ],
+      "id": "4a9e3850-4d5b-4881-addc-827ba9f508e2",
+      "name": "React with an emoji to a message1",
+      "webhookId": "5e5bd6e3-d3c2-4759-ad5a-9e8fb87abf2f",
+      "credentials": {
+        "discordBotApi": {
+          "id": "fWwhafGHGA0I0QRh",
+          "name": "Discord Bot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "react",
+        "guildId": {
+          "__rl": true,
+          "value": "1448038660430889103",
+          "mode": "list",
+          "cachedResultName": "COMANDO OCELOT",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1448090026385608755",
+          "mode": "list",
+          "cachedResultName": "⟹📰capacitaciones",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103/1448090026385608755"
+        },
+        "messageId": "={{ $json.id }}",
+        "emoji": "✅"
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        528,
+        48
+      ],
+      "id": "da480e3d-b895-44f3-92d9-dac83ba77d20",
+      "name": "React with an emoji to a message2",
+      "webhookId": "5e5bd6e3-d3c2-4759-ad5a-9e8fb87abf2f",
+      "credentials": {
+        "discordBotApi": {
+          "id": "fWwhafGHGA0I0QRh",
+          "name": "Discord Bot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "react",
+        "guildId": {
+          "__rl": true,
+          "value": "1448038660430889103",
+          "mode": "list",
+          "cachedResultName": "COMANDO OCELOT",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1448090026385608755",
+          "mode": "list",
+          "cachedResultName": "⟹📰capacitaciones",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103/1448090026385608755"
+        },
+        "messageId": "={{ $json.id }}",
+        "emoji": "❌"
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        528,
+        224
+      ],
+      "id": "6f7e78fd-11d1-454e-bf40-1146c44d1afb",
+      "name": "React with an emoji to a message3",
+      "webhookId": "5e5bd6e3-d3c2-4759-ad5a-9e8fb87abf2f",
+      "credentials": {
+        "discordBotApi": {
+          "id": "fWwhafGHGA0I0QRh",
+          "name": "Discord Bot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "react",
+        "guildId": {
+          "__rl": true,
+          "value": "1448038660430889103",
+          "mode": "list",
+          "cachedResultName": "COMANDO OCELOT",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1448090026385608755",
+          "mode": "list",
+          "cachedResultName": "⟹📰capacitaciones",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103/1448090026385608755"
+        },
+        "messageId": "={{ $json.id }}",
+        "emoji": "✅"
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        432,
+        368
+      ],
+      "id": "9f296820-1e86-4257-922a-4328d83662b5",
+      "name": "React with an emoji to a message4",
+      "webhookId": "5e5bd6e3-d3c2-4759-ad5a-9e8fb87abf2f",
+      "credentials": {
+        "discordBotApi": {
+          "id": "fWwhafGHGA0I0QRh",
+          "name": "Discord Bot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "react",
+        "guildId": {
+          "__rl": true,
+          "value": "1448038660430889103",
+          "mode": "list",
+          "cachedResultName": "COMANDO OCELOT",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1448090026385608755",
+          "mode": "list",
+          "cachedResultName": "⟹📰capacitaciones",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103/1448090026385608755"
+        },
+        "messageId": "={{ $json.id }}",
+        "emoji": "❌"
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        432,
+        544
+      ],
+      "id": "09bc8a87-d6d2-4bac-bffd-21d2913f21fe",
+      "name": "React with an emoji to a message5",
+      "webhookId": "5e5bd6e3-d3c2-4759-ad5a-9e8fb87abf2f",
+      "credentials": {
+        "discordBotApi": {
+          "id": "fWwhafGHGA0I0QRh",
+          "name": "Discord Bot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "guildId": {
+          "__rl": true,
+          "value": "1448038660430889103",
+          "mode": "list",
+          "cachedResultName": "COMANDO OCELOT",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1448090026385608755",
+          "mode": "list",
+          "cachedResultName": "⟹📰capacitaciones",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103/1448090026385608755"
+        },
+        "content": "=🎖️ EXAMEN DE CAPACITACIÓN GRANADERO 🎖️\n\n📅 Fecha: {{ $json.fechaSeleccionada }}\n🕘 Hora: 20:30 - 21:00 (Hora Española)\n\n━━━━━━━━━━━━━━━━━━━━━━━\n\n⚠️ OBLIGATORIO para todo el personal que desee certificarse como granadero.\n\nSe evaluará:\n\n🔹 Protocolos y normas de seguridad\n🔹 Uso correcto del lanzagranadas acoplado\n🔹 Empleo de munición HE y HDP\n🔹 Precisión y cálculo de distancia\n\n━━━━━━━━━━━━━━━━━━━━━━━\n\n📌 RECOMENDACIÓN DEL MANDO:\n\nEntrenen con antelación. Practiquen puntería, cálculo de caída y familiarícense con el uso de granadas HE y HDP.\n\n━━━━━━━━━━━━━━━━━━━━━━━\n\nReaccionen a esta publicación con ✅ en caso de asistir.\n\n|| <@&1448053992469958677> ||",
+        "options": {},
+        "embeds": {
+          "values": []
+        },
+        "files": {
+          "values": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        320,
+        128
+      ],
+      "id": "7d6e13bc-4a22-4734-802f-273ddd019d30",
+      "name": "GRANA",
+      "webhookId": "36634907-a8a0-4c11-935d-80939db2ccfa",
+      "credentials": {
+        "discordBotApi": {
+          "id": "fWwhafGHGA0I0QRh",
+          "name": "Discord Bot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "guildId": {
+          "__rl": true,
+          "value": "1448038660430889103",
+          "mode": "list",
+          "cachedResultName": "COMANDO OCELOT",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1448090026385608755",
+          "mode": "list",
+          "cachedResultName": "⟹📰capacitaciones",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103/1448090026385608755"
+        },
+        "content": "=⚡ **EXAMEN DE CAPACITACIÓN: AMETRALLADOR** ⚡\n\n**FECHA:** {{ $json.fechaSeleccionada }}\n**HORARIO:** 21:00 - 21:30 (Hora Española)\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n⚠️ **REQUISITO OPERATIVO**\n\nEste examen es **OBLIGATORIO** para todo aquel que aspire a la especialidad de **Ametrallador**. Sin la certificación, no se autorizará el uso de armamento de apoyo en operativos oficiales.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n### 📋 **BLOQUES DE EVALUACIÓN**\n\n* 🎯 **Control de Supresión y Acierto:** Capacidad para fijar al enemigo, gestionar el retroceso en ráfagas largas y eficacia en el abatimiento.\n\n* 🛡️ **Posicionamiento Estratégico:** Localización de nidos de ametralladora que maximicen la supervivencia y el ángulo de tiro (Sectores de Fuego).\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n### 🎖️ **CONSEJOS DEL CUARTEL GENERAL**\n\n*No queremos \"Rambos\" gastando munición al aire. Queremos muros de acero.*\n\n1. Practiquen la transición entre ráfagas cortas, medias y fuego sostenido.\n\n2. Entrenen la punteria.\n\n------------------------------------------\n\n**Reaccionen a esta publicación con ✅ en caso de asistir. ¡Gracias!**\n\n|| <@&1448053992469958677> ||\n\n",
+        "options": {},
+        "embeds": {
+          "values": []
+        },
+        "files": {
+          "values": []
+        }
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        288,
+        496
+      ],
+      "id": "8160397c-d48b-4a54-bf9a-f0ae279948a7",
+      "name": "AMT",
+      "webhookId": "36634907-a8a0-4c11-935d-80939db2ccfa",
+      "credentials": {
+        "discordBotApi": {
+          "id": "fWwhafGHGA0I0QRh",
+          "name": "Discord Bot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "guildId": {
+          "__rl": true,
+          "value": "1448038660430889103",
+          "mode": "list",
+          "cachedResultName": "COMANDO OCELOT",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1448090026385608755",
+          "mode": "list",
+          "cachedResultName": "⟹📰capacitaciones",
+          "cachedResultUrl": "https://discord.com/channels/1448038660430889103/1448090026385608755"
+        },
+        "content": "=🎖️ **EXAMEN DE CAPACITACIÓN AT (ANTI-TANQUE)** 🎖️\n\n📅 **Fecha:** {{ $json.fechaSeleccionada }}\n🕒 **Hora:** 20:00 - 20:30 (Hora Española)\n\n------------------------------------------\n\n⚠️ **OBLIGATORIO** para todo el personal que desee certificarse como operador AT.\n\nSe evaluará:\n🔹 Protocolos y normas de seguridad\n🔹 Uso correcto del armamento AT\n🔹 Precisión y cálculo de distancia\n\n------------------------------------------\n\n📌 **RECOMENDACIÓN DEL MANDO:**\nEntrenen con antelación. Practiquen puntería, Entrenen con RPG-7 y léanse el documento de los tipos de vehículo.\n\n------------------------------------------\n\n**Reaccionen a esta publicación con ✅ en caso de asistir gracias**\n|| <@&1448053992469958677> ||\nhttps://docs.google.com/document/d/18QMeGsC0a8ZTqfPBnyhSTAZsPsV_PfLGG3RrQXjgGug/edit?usp=sharing",
+        "options": {},
+        "embeds": {
+          "values": []
+        },
+        "files": {
+          "values": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        448,
+        -208
+      ],
+      "id": "50cb136b-9ec1-41e9-8d23-fa611bced12a",
+      "name": "AT",
+      "webhookId": "36634907-a8a0-4c11-935d-80939db2ccfa",
+      "credentials": {
+        "discordBotApi": {
+          "id": "fWwhafGHGA0I0QRh",
+          "name": "Discord Bot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://drive.google.com/uc?id=1YfVOrPvAzcihLcMjqo1nH6uB4rccLEze",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        256,
+        -208
+      ],
+      "id": "c20a4ec1-543a-46da-93c0-af01adf47d58",
+      "name": "HTTP Request/ IMAGEN AT"
+    },
+    {
+      "parameters": {
+        "url": "https://drive.google.com/uc?export=download&id=1o7fc7DzSwanGI0eTgVsYCkSjKlVKQuN_",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        160,
+        128
+      ],
+      "id": "06b697ab-e5fb-40dc-b69a-1bac7d558385",
+      "name": "HTTP Request/ IMAGNE GRANA"
+    },
+    {
+      "parameters": {
+        "url": "https://drive.google.com/file/d/1o7fc7DzSwanGI0eTgVsYCkSjKlVKQuN_/view?usp=sharing",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        144,
+        496
+      ],
+      "id": "4728db9f-5890-460d-b2b4-4f8eed65228a",
+      "name": "HTTP Request/ IMAGNE AMT"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request/ IMAGEN AT",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request/ IMAGNE GRANA",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request/ IMAGNE AMT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GRANA": {
+      "main": [
+        [
+          {
+            "node": "React with an emoji to a message2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "React with an emoji to a message3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AMT": {
+      "main": [
+        [
+          {
+            "node": "React with an emoji to a message4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "React with an emoji to a message5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AT": {
+      "main": [
+        [
+          {
+            "node": "React with an emoji to a message",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "React with an emoji to a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request/ IMAGEN AT": {
+      "main": [
+        [
+          {
+            "node": "AT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request/ IMAGNE GRANA": {
+      "main": [
+        [
+          {
+            "node": "GRANA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request/ IMAGNE AMT": {
+      "main": [
+        [
+          {
+            "node": "AMT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "3cb9730e-d76d-4b3e-a6a3-1132f286e852",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "57c69d1f4aacdac750b2a5271f22400b129f6bbbf15b5676f7e965363b214fae"
+  },
+  "id": "d83LIYvkP6HioULi",
+  "tags": []
+}
