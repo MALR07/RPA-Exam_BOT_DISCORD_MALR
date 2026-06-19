@@ -1,0 +1,1538 @@
+{
+  "name": "Mensaje OCELOT DISCORD 3",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds",
+              "secondsInterval": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -912,
+        -32
+      ],
+      "id": "c161149c-9ee1-4ff3-8be6-e7145a15e7cf",
+      "name": "Schedule Trigger",
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "getAll",
+        "guildId": {
+          "__rl": true,
+          "value": "1514615194188513410",
+          "mode": "id"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1514615194188513410",
+          "mode": "id"
+        },
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        -560,
+        -32
+      ],
+      "id": "51f9661e-1a87-47a4-9843-e472763e3043",
+      "name": "Get many messages",
+      "webhookId": "b2262e37-743a-4aca-902b-f11e00cc4980",
+      "credentials": {
+        "discordBotApi": {
+          "id": "YNLLoBuDwMiLWctD",
+          "name": "Discord Bot account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ef557b65-b27c-43d3-a1c0-590d51f06753",
+              "leftValue": "={{ $json.content }}",
+              "rightValue": "iniciar",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "d0c1c913-d890-4a48-b8e8-351fa35952f7",
+              "leftValue": "={{ $json.author.username }}",
+              "rightValue": "miguelostark",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -288,
+        -32
+      ],
+      "id": "1f9c71c5-e659-4db7-a315-e96ac214d0a6",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appmJShsEqeMNNgGD",
+          "mode": "list",
+          "cachedResultName": "Hora_Ocelot",
+          "cachedResultUrl": "https://airtable.com/appmJShsEqeMNNgGD"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblaiHb2VM8gbTG3c",
+          "mode": "list",
+          "cachedResultName": "Hora y fecha",
+          "cachedResultUrl": "https://airtable.com/appmJShsEqeMNNgGD/tblaiHb2VM8gbTG3c"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Estado": "Inicio",
+            "ID": "={{ $json.author.id }}",
+            "Username": "={{ $json.author.username }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Username",
+              "displayName": "Username",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Hora",
+              "displayName": "Hora",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Pendiente",
+                  "value": "Pendiente"
+                },
+                {
+                  "name": "Completado",
+                  "value": "Completado"
+                },
+                {
+                  "name": "Inicio",
+                  "value": "Inicio"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Seleccionar",
+              "displayName": "Seleccionar",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "AT",
+                  "value": "AT"
+                },
+                {
+                  "name": "GRANADERO",
+                  "value": "GRANADERO"
+                },
+                {
+                  "name": "AMETRALLADOR",
+                  "value": "AMETRALLADOR"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        -224
+      ],
+      "id": "8f9f4c24-0e17-49ee-8fd7-3c550f73736d",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "sIhIbX5Bq6VRwF8E",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.fields.Estado }}",
+                    "rightValue": "Inicio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "933ee928-b77a-426d-8241-13053d71aa89"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "fd8497ff-ec19-40e7-a198-438e187a466f",
+                    "leftValue": "={{ $json.fields.Estado }}",
+                    "rightValue": "Selecionado_especialidad",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "3d836c89-e1b2-4b1d-a82d-0329a02e0ad0",
+                    "leftValue": "={{ $json.fields.Estado }}",
+                    "rightValue": "Completado",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        -240
+      ],
+      "id": "fec76636-6e07-46ff-95df-49282a51847a",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "guildId": {
+          "__rl": true,
+          "value": "1514615194188513410",
+          "mode": "id"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1514615194188513410",
+          "mode": "id"
+        },
+        "content": "Comando no valido prueba otra vez con \"iniciar\" gracias",
+        "options": {},
+        "embeds": {
+          "values": []
+        },
+        "files": {
+          "values": []
+        }
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        32,
+        192
+      ],
+      "id": "741c02f1-46d9-4763-935a-2a98961d1e05",
+      "name": "Send a message",
+      "webhookId": "b2262e37-743a-4aca-902b-f11e00cc4980",
+      "credentials": {
+        "discordBotApi": {
+          "id": "YNLLoBuDwMiLWctD",
+          "name": "Discord Bot account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appmJShsEqeMNNgGD",
+          "mode": "list",
+          "cachedResultName": "Hora_Ocelot",
+          "cachedResultUrl": "https://airtable.com/appmJShsEqeMNNgGD"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblaiHb2VM8gbTG3c",
+          "mode": "list",
+          "cachedResultName": "Hora y fecha",
+          "cachedResultUrl": "https://airtable.com/appmJShsEqeMNNgGD/tblaiHb2VM8gbTG3c"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Create a record').item.json.id }}",
+            "ID": "={{ $('Create a record').item.json.fields.ID }}",
+            "Estado": "Selecionado_especialidad"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Username",
+              "displayName": "Username",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Hora",
+              "displayName": "Hora",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Pendiente",
+                  "value": "Pendiente"
+                },
+                {
+                  "name": "Completado",
+                  "value": "Completado"
+                },
+                {
+                  "name": "Inicio",
+                  "value": "Inicio"
+                },
+                {
+                  "name": "Esperando_fechas",
+                  "value": "Esperando_fechas"
+                },
+                {
+                  "name": "Selecionado_especialidad",
+                  "value": "Selecionado_especialidad"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Seleccionar",
+              "displayName": "Seleccionar",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "AT",
+                  "value": "AT"
+                },
+                {
+                  "name": "GRANADERO",
+                  "value": "GRANADERO"
+                },
+                {
+                  "name": "AMETRALLADOR",
+                  "value": "AMETRALLADOR"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        -336
+      ],
+      "id": "3e8722fe-334b-43cd-b364-7115f5a291df",
+      "name": "Update record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "sIhIbX5Bq6VRwF8E",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "sendAndWait",
+        "guildId": {
+          "__rl": true,
+          "value": "1514615194188513410",
+          "mode": "id"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1514615194188513410",
+          "mode": "id"
+        },
+        "message": "\"¡Hola! He iniciado tu sesión. Selecciona una o varias especialidades para el examen:",
+        "responseType": "customForm",
+        "defineForm": "json",
+        "jsonOutput": "=[\n  {\n    \"fieldLabel\": \"Selecciona tus especialidades\",\n    \"fieldType\": \"checkbox\",\n    \"fieldOptions\": {\n      \"values\": [\n        { \"option\": \"AT\" },\n        { \"option\": \"Granadero\" },\n        { \"option\": \"Ametrallador\" }\n      ]\n    },\n    \"requiredField\": true\n  },\n  {\n    \"fieldLabel\": \"Fecha para AT\",\n    \"fieldType\": \"date\",\n    \"requiredField\": false\n  },\n  {\n    \"fieldLabel\": \"Hora para AT\",\n    \"fieldType\": \"dropdown\",\n    \"fieldOptions\": {\n      \"values\": [\n        { \"option\": \"17:00\" }, { \"option\": \"17:30\" }, { \"option\": \"18:00\" },\n        { \"option\": \"18:30\" }, { \"option\": \"19:00\" }, { \"option\": \"19:30\" },\n        { \"option\": \"20:00\" }, { \"option\": \"20:30\" }, { \"option\": \"21:00\" },\n        { \"option\": \"21:30\" }, { \"option\": \"22:00\" }, { \"option\": \"22:30\" },\n        { \"option\": \"23:00\" }\n      ]\n    },\n    \"requiredField\": false\n  },\n  {\n    \"fieldLabel\": \"Fecha para Granadero\",\n    \"fieldType\": \"date\",\n    \"requiredField\": false\n  },\n  {\n    \"fieldLabel\": \"Hora para Granadero\",\n    \"fieldType\": \"dropdown\",\n    \"fieldOptions\": {\n      \"values\": [\n        { \"option\": \"17:00\" }, { \"option\": \"17:30\" }, { \"option\": \"18:00\" },\n        { \"option\": \"18:30\" }, { \"option\": \"19:00\" }, { \"option\": \"19:30\" },\n        { \"option\": \"20:00\" }, { \"option\": \"20:30\" }, { \"option\": \"21:00\" },\n        { \"option\": \"21:30\" }, { \"option\": \"22:00\" }, { \"option\": \"22:30\" },\n        { \"option\": \"23:00\" }\n      ]\n    },\n    \"requiredField\": false\n  },\n  {\n    \"fieldLabel\": \"Fecha para Ametrallador\",\n    \"fieldType\": \"date\",\n    \"requiredField\": false\n  },\n  {\n    \"fieldLabel\": \"Hora para Ametrallador\",\n    \"fieldType\": \"dropdown\",\n    \"fieldOptions\": {\n      \"values\": [\n        { \"option\": \"17:00\" }, { \"option\": \"17:30\" }, { \"option\": \"18:00\" },\n        { \"option\": \"18:30\" }, { \"option\": \"19:00\" }, { \"option\": \"19:30\" },\n        { \"option\": \"20:00\" }, { \"option\": \"20:30\" }, { \"option\": \"21:00\" },\n        { \"option\": \"21:30\" }, { \"option\": \"22:00\" }, { \"option\": \"22:30\" },\n        { \"option\": \"23:00\" }\n      ]\n    },\n    \"requiredField\": false\n  }\n] ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        656,
+        -224
+      ],
+      "id": "854286b1-e505-4819-98e5-69661df297ac",
+      "name": "Create a channel",
+      "webhookId": "b266d10e-bfc5-451f-9b85-87c0833b0a29",
+      "credentials": {
+        "discordBotApi": {
+          "id": "YNLLoBuDwMiLWctD",
+          "name": "Discord Bot account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Accedemos a la propiedad 'data' del nodo anterior\nconst data = $input.all()[0].json.data; \nconst seleccionadas = data[\"Selecciona tus especialidades\"] || [];\nconst resultados = []; // Este es nuestro \"lista\"\n\nseleccionadas.forEach(especialidad => {\n  // Vamos empujando cada objeto a nuestra lista\n  resultados.push({\n    json: {\n      \"Especialidad\": [especialidad], \n      \"Fecha\": data[`Fecha para ${especialidad}`] || null,\n      \"Hora\": data[`Hora para ${especialidad}`] || null\n    }\n  });\n});\n\n// ¡IMPORTANTE! Devolvemos el array completo\nreturn resultados;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        832,
+        -224
+      ],
+      "id": "0aa47841-d194-4be5-a468-5497ade353ca",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appmJShsEqeMNNgGD",
+          "mode": "list",
+          "cachedResultName": "Hora_Ocelot",
+          "cachedResultUrl": "https://airtable.com/appmJShsEqeMNNgGD"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblPyvwB9qKOZ5Iyr",
+          "mode": "list",
+          "cachedResultName": "hora y fecha de cada",
+          "cachedResultUrl": "https://airtable.com/appmJShsEqeMNNgGD/tblPyvwB9qKOZ5Iyr"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "fecha": "={{ $json.Fecha }}",
+            "hora": "={{ $json.Hora }}",
+            "Seleccionar": "={{ (Array.isArray($json.Especialidad) ? $json.Especialidad[0] : $json.Especialidad).toUpperCase() }}",
+            "Nombre": "Miguelon"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "creacion",
+              "displayName": "creacion",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "fecha",
+              "displayName": "fecha",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "hora",
+              "displayName": "hora",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Seleccionar",
+              "displayName": "Seleccionar",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "AT",
+                  "value": "AT"
+                },
+                {
+                  "name": "GRANADERO",
+                  "value": "GRANADERO"
+                },
+                {
+                  "name": "AMETRALLADOR",
+                  "value": "AMETRALLADOR"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "typecast": true
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        992,
+        -224
+      ],
+      "id": "a2c155dc-b364-4dac-aad0-03fe37729d28",
+      "name": "Create a record1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "sIhIbX5Bq6VRwF8E",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.fields.Seleccionar }}",
+                    "rightValue": "AT",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "933ee928-b77a-426d-8241-13053d71aa89"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "f6d40492-f0e6-45e0-bd35-3b226956c77c",
+                    "leftValue": "={{ $json.fields.Seleccionar }}",
+                    "rightValue": "GRANADERO",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "fd8497ff-ec19-40e7-a198-438e187a466f",
+                    "leftValue": "={{ $json.fields.Seleccionar }}",
+                    "rightValue": "AMETRALLADOR",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "8d33adfa-e79a-4c5a-9587-26b77d30234c",
+                    "leftValue": "={{ $json.fields.Seleccionar }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "none"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        1184,
+        -256
+      ],
+      "id": "62051a82-d262-407b-a0d4-9b5506c5d18b",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "react",
+        "guildId": {
+          "__rl": true,
+          "value": "372756271977463818",
+          "mode": "list",
+          "cachedResultName": "Camachito Army",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "836256205886062602",
+          "mode": "list",
+          "cachedResultName": "admin-manda-mi-arma",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818/836256205886062602"
+        },
+        "messageId": "={{ $json.id }}",
+        "emoji": "✅"
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        -496
+      ],
+      "id": "2064ebb9-2d6e-40e5-a3ca-7e816afaac0c",
+      "name": "React with an emoji to a message",
+      "webhookId": "5e5bd6e3-d3c2-4759-ad5a-9e8fb87abf2f",
+      "credentials": {
+        "discordBotApi": {
+          "id": "YNLLoBuDwMiLWctD",
+          "name": "Discord Bot account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "react",
+        "guildId": {
+          "__rl": true,
+          "value": "372756271977463818",
+          "mode": "list",
+          "cachedResultName": "Camachito Army",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "836256205886062602",
+          "mode": "list",
+          "cachedResultName": "admin-manda-mi-arma",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818/836256205886062602"
+        },
+        "messageId": "={{ $json.id }}",
+        "emoji": "❌"
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        -320
+      ],
+      "id": "66417d94-0a5d-4787-9d12-96e98112b6dc",
+      "name": "React with an emoji to a message1",
+      "webhookId": "5e5bd6e3-d3c2-4759-ad5a-9e8fb87abf2f",
+      "credentials": {
+        "discordBotApi": {
+          "id": "YNLLoBuDwMiLWctD",
+          "name": "Discord Bot account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "react",
+        "guildId": {
+          "__rl": true,
+          "value": "372756271977463818",
+          "mode": "list",
+          "cachedResultName": "Camachito Army",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "836256205886062602",
+          "mode": "list",
+          "cachedResultName": "admin-manda-mi-arma",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818/836256205886062602"
+        },
+        "messageId": "={{ $json.id }}",
+        "emoji": "✅"
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        2144,
+        -160
+      ],
+      "id": "904d0aca-05ce-49ab-b8a9-0bc0488ff89c",
+      "name": "React with an emoji to a message2",
+      "webhookId": "5e5bd6e3-d3c2-4759-ad5a-9e8fb87abf2f",
+      "credentials": {
+        "discordBotApi": {
+          "id": "YNLLoBuDwMiLWctD",
+          "name": "Discord Bot account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "react",
+        "guildId": {
+          "__rl": true,
+          "value": "372756271977463818",
+          "mode": "list",
+          "cachedResultName": "Camachito Army",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "836256205886062602",
+          "mode": "list",
+          "cachedResultName": "admin-manda-mi-arma",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818/836256205886062602"
+        },
+        "messageId": "={{ $json.id }}",
+        "emoji": "❌"
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        2144,
+        32
+      ],
+      "id": "a4698963-9154-485f-ba22-25c1226884eb",
+      "name": "React with an emoji to a message3",
+      "webhookId": "5e5bd6e3-d3c2-4759-ad5a-9e8fb87abf2f",
+      "credentials": {
+        "discordBotApi": {
+          "id": "YNLLoBuDwMiLWctD",
+          "name": "Discord Bot account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "react",
+        "guildId": {
+          "__rl": true,
+          "value": "372756271977463818",
+          "mode": "list",
+          "cachedResultName": "Camachito Army",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "836256205886062602",
+          "mode": "list",
+          "cachedResultName": "admin-manda-mi-arma",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818/836256205886062602"
+        },
+        "messageId": "={{ $json.id }}",
+        "emoji": "✅"
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        2160,
+        272
+      ],
+      "id": "cb22a770-09a1-4b6b-a143-da683877a962",
+      "name": "React with an emoji to a message4",
+      "webhookId": "5e5bd6e3-d3c2-4759-ad5a-9e8fb87abf2f",
+      "credentials": {
+        "discordBotApi": {
+          "id": "YNLLoBuDwMiLWctD",
+          "name": "Discord Bot account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "react",
+        "guildId": {
+          "__rl": true,
+          "value": "372756271977463818",
+          "mode": "list",
+          "cachedResultName": "Camachito Army",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "836256205886062602",
+          "mode": "list",
+          "cachedResultName": "admin-manda-mi-arma",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818/836256205886062602"
+        },
+        "messageId": "={{ $json.id }}",
+        "emoji": "❌"
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        2160,
+        448
+      ],
+      "id": "10b2641d-1510-48e7-8c7f-bc5631065f2f",
+      "name": "React with an emoji to a message5",
+      "webhookId": "5e5bd6e3-d3c2-4759-ad5a-9e8fb87abf2f",
+      "credentials": {
+        "discordBotApi": {
+          "id": "YNLLoBuDwMiLWctD",
+          "name": "Discord Bot account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "guildId": {
+          "__rl": true,
+          "value": "372756271977463818",
+          "mode": "list",
+          "cachedResultName": "Camachito Army",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "885232842051846224",
+          "mode": "list",
+          "cachedResultName": "solo-escribe-miguel-no-tiene-con-quien-hablar",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818/885232842051846224"
+        },
+        "content": "=🎖️ EXAMEN DE CAPACITACIÓN GRANADERO 🎖️\n\n📅 Fecha: {{ $('Switch1').item.json.fields.fecha }}\n🕘 Hora: {{ $('Switch1').item.json.fields.hora }}(Hora Española) **Duracion 30 MIN**\n\n━━━━━━━━━━━━━━━━━━━━━━━\n\n⚠️ OBLIGATORIO para todo el personal que desee certificarse como granadero.\n\nSe evaluará:\n\n🔹 Protocolos y normas de seguridad\n🔹 Uso correcto del lanzagranadas acoplado\n🔹 Empleo de munición HE y HDP\n🔹 Precisión y cálculo de distancia\n\n━━━━━━━━━━━━━━━━━━━━━━━\n\n📌 RECOMENDACIÓN DEL MANDO:\n\nEntrenen con antelación. Practiquen puntería, cálculo de caída y familiarícense con el uso de granadas HE y HDP.\n\n━━━━━━━━━━━━━━━━━━━━━━━\n\nReaccionen a esta publicación con ✅ en caso de asistir.\n\n|| <@&1448053992469958677> ||",
+        "options": {},
+        "embeds": {
+          "values": []
+        },
+        "files": {
+          "values": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        1888,
+        -160
+      ],
+      "id": "3b4182d8-6c7f-4753-9460-4427f3b4326c",
+      "name": "GRANA",
+      "webhookId": "36634907-a8a0-4c11-935d-80939db2ccfa",
+      "credentials": {
+        "discordBotApi": {
+          "id": "YNLLoBuDwMiLWctD",
+          "name": "Discord Bot account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "guildId": {
+          "__rl": true,
+          "value": "372756271977463818",
+          "mode": "list",
+          "cachedResultName": "Camachito Army",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "885232842051846224",
+          "mode": "list",
+          "cachedResultName": "solo-escribe-miguel-no-tiene-con-quien-hablar",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818/885232842051846224"
+        },
+        "content": "=⚡ **EXAMEN DE CAPACITACIÓN: AMETRALLADOR** ⚡\n\n**FECHA:** {{ $json.fields.fecha }}\n**HORARIO:** {{ $json.fields.hora }} (Hora Española) **Duracion 30 MIN**\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n⚠️ **REQUISITO OPERATIVO**\n\nEste examen es **OBLIGATORIO** para todo aquel que aspire a la especialidad de **Ametrallador**. Sin la certificación, no se autorizará el uso de armamento de apoyo en operativos oficiales.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n### 📋 **BLOQUES DE EVALUACIÓN**\n\n* 🎯 **Control de Supresión y Acierto:** Capacidad para fijar al enemigo, gestionar el retroceso en ráfagas largas y eficacia en el abatimiento.\n\n* 🛡️ **Posicionamiento Estratégico:** Localización de nidos de ametralladora que maximicen la supervivencia y el ángulo de tiro (Sectores de Fuego).\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n### 🎖️ **CONSEJOS DEL CUARTEL GENERAL**\n\n*No queremos \"Rambos\" gastando munición al aire. Queremos muros de acero.*\n\n1. Practiquen la transición entre ráfagas cortas, medias y fuego sostenido.\n\n2. Entrenen la punteria.\n\n------------------------------------------\n\n**Reaccionen a esta publicación con ✅ en caso de asistir. ¡Gracias!**\n\n|| <@&1448053992469958677> ||\n\n",
+        "options": {},
+        "embeds": {
+          "values": []
+        },
+        "files": {
+          "values": []
+        }
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        1904,
+        352
+      ],
+      "id": "0e3f922d-0875-4426-b6a3-34b9d19253ec",
+      "name": "AMT",
+      "webhookId": "36634907-a8a0-4c11-935d-80939db2ccfa",
+      "credentials": {
+        "discordBotApi": {
+          "id": "YNLLoBuDwMiLWctD",
+          "name": "Discord Bot account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "guildId": {
+          "__rl": true,
+          "value": "372756271977463818",
+          "mode": "list",
+          "cachedResultName": "Camachito Army",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "885232842051846224",
+          "mode": "list",
+          "cachedResultName": "solo-escribe-miguel-no-tiene-con-quien-hablar",
+          "cachedResultUrl": "https://discord.com/channels/372756271977463818/885232842051846224"
+        },
+        "content": "=🎖️ **EXAMEN DE CAPACITACIÓN AT (ANTI-TANQUE)** 🎖️\n\n📅 **Fecha:** {{ $('Switch1').item.json.fields.fecha }}\n🕒 **Hora:** {{ $('Switch1').item.json.fields.hora }} (Hora Española) **Duracion 30 MIN**\n------------------------------------------\n\n⚠️ **OBLIGATORIO** para todo el personal que desee certificarse como operador AT.\n\nSe evaluará:\n🔹 Protocolos y normas de seguridad\n🔹 Uso correcto del armamento AT\n🔹 Precisión y cálculo de distancia\n\n------------------------------------------\n\n📌 **RECOMENDACIÓN DEL MANDO:**\nEntrenen con antelación. Practiquen puntería, Entrenen con RPG-7 y léanse el documento de los tipos de vehículo.\n\n------------------------------------------\n\n**Reaccionen a esta publicación con ✅ en caso de asistir gracias**\n|| <@&1448053992469958677> ||\nhttps://docs.google.com/document/d/18QMeGsC0a8ZTqfPBnyhSTAZsPsV_PfLGG3RrQXjgGug/edit?usp=sharing",
+        "options": {},
+        "embeds": {
+          "values": []
+        },
+        "files": {
+          "values": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        -416
+      ],
+      "id": "e53414e3-bfd3-4309-bf16-777b9e912825",
+      "name": "AT",
+      "webhookId": "36634907-a8a0-4c11-935d-80939db2ccfa",
+      "credentials": {
+        "discordBotApi": {
+          "id": "YNLLoBuDwMiLWctD",
+          "name": "Discord Bot account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://drive.google.com/uc?id=1YfVOrPvAzcihLcMjqo1nH6uB4rccLEze",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1536,
+        -416
+      ],
+      "id": "5adaddb0-a3d9-493e-a8bf-899c84f03d6b",
+      "name": "HTTP Request/ IMAGEN AT"
+    },
+    {
+      "parameters": {
+        "url": "https://drive.google.com/uc?export=download&id=1o7fc7DzSwanGI0eTgVsYCkSjKlVKQuN_",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1568,
+        -160
+      ],
+      "id": "59efb87e-6419-4bb8-a08c-4e9bbb64d8db",
+      "name": "HTTP Request/ IMAGNE GRANA"
+    },
+    {
+      "parameters": {
+        "url": "https://drive.google.com/file/d/1o7fc7DzSwanGI0eTgVsYCkSjKlVKQuN_/view?usp=sharing",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1520,
+        352
+      ],
+      "id": "30e4adca-2c67-48e1-8b66-8398b016abab",
+      "name": "HTTP Request/ IMAGNE AMT"
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "guildId": {
+          "__rl": true,
+          "value": "1514615194188513410",
+          "mode": "id"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1514615194188513410",
+          "mode": "id"
+        },
+        "content": "No se introdujo nada vuelve a iniciar gracias",
+        "options": {},
+        "embeds": {
+          "values": []
+        },
+        "files": {
+          "values": []
+        }
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        144
+      ],
+      "id": "705b4841-b495-413a-bda9-2708bb407f25",
+      "name": "Send a message1",
+      "webhookId": "b2262e37-743a-4aca-902b-f11e00cc4980",
+      "credentials": {
+        "discordBotApi": {
+          "id": "YNLLoBuDwMiLWctD",
+          "name": "Discord Bot account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "guildId": {
+          "__rl": true,
+          "value": "1514615194188513410",
+          "mode": "id"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1514615194188513410",
+          "mode": "id"
+        },
+        "content": "Completado inicia otra para otro examen ",
+        "options": {},
+        "embeds": {
+          "values": []
+        },
+        "files": {
+          "values": []
+        }
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        416,
+        32
+      ],
+      "id": "475f2128-c921-4ff1-b67a-0382e670f370",
+      "name": "Send a message2",
+      "webhookId": "b2262e37-743a-4aca-902b-f11e00cc4980",
+      "credentials": {
+        "discordBotApi": {
+          "id": "YNLLoBuDwMiLWctD",
+          "name": "Discord Bot account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get many messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many messages": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a record": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Update record",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create a channel",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update record": {
+      "main": [
+        [
+          {
+            "node": "Create a channel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a channel": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Create a record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a record1": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GRANA": {
+      "main": [
+        [
+          {
+            "node": "React with an emoji to a message2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "React with an emoji to a message3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AMT": {
+      "main": [
+        [
+          {
+            "node": "React with an emoji to a message4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "React with an emoji to a message5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AT": {
+      "main": [
+        [
+          {
+            "node": "React with an emoji to a message",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "React with an emoji to a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request/ IMAGEN AT": {
+      "main": [
+        [
+          {
+            "node": "AT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request/ IMAGNE GRANA": {
+      "main": [
+        [
+          {
+            "node": "GRANA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request/ IMAGNE AMT": {
+      "main": [
+        [
+          {
+            "node": "AMT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request/ IMAGEN AT",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request/ IMAGNE GRANA",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request/ IMAGNE AMT",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "1c10ee9d-6b42-4591-9928-3b57766a7232",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "57c69d1f4aacdac750b2a5271f22400b129f6bbbf15b5676f7e965363b214fae"
+  },
+  "nodeGroups": [],
+  "id": "DoTjyjnqZFB0y1Eg",
+  "tags": []
+}
