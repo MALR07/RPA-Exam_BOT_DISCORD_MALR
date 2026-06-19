@@ -1,4 +1,5 @@
 # 🤖 Discord RPA Bot - Gestión de Exámenes Automatizada
+<img width="1254" height="1254" alt="logo EXAM BOT" src="https://github.com/user-attachments/assets/72021c34-d734-4048-b59e-2d1cc5e6b46c" />
 
 Este repositorio contiene el flujo de automatización (RPA) desarrollado en **n8n** para optimizar la distribución de exámenes y el control de la comunidad en nuestro servidor de Discord. El sistema elimina la necesidad de subir archivos manualmente y estructurar las menciones en cada publicación.
 
